@@ -1,4 +1,5 @@
 jinja2
+bs4
 pandas
 numpy
 plotly
