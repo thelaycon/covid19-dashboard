@@ -89,4 +89,4 @@ def home(ctx):
 dash = App
 dash.add_path("/",home)
 dash.set_static("/static/", "assets")
-dash.serve()
+wsgi = dash.wsgi
