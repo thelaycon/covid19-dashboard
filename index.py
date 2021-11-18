@@ -37,6 +37,10 @@ def home(ctx):
     fig.add_trace(go.Scatter(name="Deaths", x=x_death, y=y_death, fill="tozeroy"))
     fig.add_trace(go.Scatter(name="Recovered", x=x_recovered, y=y_recovered, fill="tozeroy"))
     fig.update_layout(
+            autosize=False,
+            width=400,
+            xaxis_fixedrange=True,
+            yaxis_fixedrange=True,
             title={
         'text': "JHU Time Series",
         'y':0.9,
@@ -48,7 +52,7 @@ def home(ctx):
            showlegend = True,
            font=dict(
                family="Courier New, monospace",
-               size=18,
+               size=10,
                color="RebeccaPurple"
                )
            )
@@ -64,6 +68,10 @@ def home(ctx):
                 ]
             )
     fig.update_layout(
+            autosize=False,
+            width=400,
+            xaxis_fixedrange=True,
+            yaxis_fixedrange=True,
             title={
         'text': "NCDC Daily Updates",
         'y':0.9,
@@ -76,7 +84,7 @@ def home(ctx):
             barmode="stack",
             font=dict(
                 family="Courier New, monospace",
-                size=18,
+                size=10,
                 color="RebeccaPurple"
                 ),
             )
@@ -90,3 +98,4 @@ dash = App
 dash.add_path("/",home)
 dash.set_static("/static/", "assets")
 wsgi = dash.wsgi
+#dash.serve()
