@@ -3,8 +3,9 @@
 
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Covid19 Live Updates</title>
+		<title>COVID-19 Dashboard</title>
 		<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+		<script src="/static/js/plotly.min.js"></script>
 	</head>
 	<body>
 
@@ -19,44 +20,74 @@
   </div>
   <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
 	  <div class="text-sm lg:flex-grow">
-		  <a href="https://github.com/thelaycon/covid19-dash" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-        Github
+		  <a href="https://covid19.ncdc.gov.ng/report/" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        NCDC Data
 		  </a>
-      <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+      <a href="https://github.com/CSSEGISandData/COVID-19" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
         JHU Data
-      </a>
-      <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
-        Blog
       </a>
     </div>
     <div>
-      <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Download</a>
+      <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Learn more</a>
     </div>
   </div>
 </nav>
-	  <div class="max-w-screen-lg w-full pt-20 pb-20 mb-8 text-center" style="background-image:url('/static/images/covid.jpg');">
+	  <div class="max-w-screen-lg w-full pt-20 pb-20 mb-2 text-center" style="background-image:url('/static/images/covid.jpg');">
         <h2 class="text-3xl leading-9 font-bold tracking-tight sm:text-4xl sm:leading-10">
            Covid-19 Statistics Dashboard - Nigeria 
         </h2>
             </div>
-	    <div>
-		    <div>
-			    <h4>Confirmed Cases</h4>
-		    </div>
-		    {{ graph1 }}
+	    <div class="m-5">
+		    <div class="max-w-sm w-full lg:max-w-full lg:flex">
+			    <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/static/images/testing.jpg')" title="Covid19 Testing">
+  </div>
+  <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+    <div class="mb-8 p-5">
+      <div class="text-gray-900 font-bold text-xl mb-2">NCDC Updates</div>
+      <p class="text-gray-700 text-base">
+      <ul class="list-disc">
+      {% for news in covid_news %}
+      <li>{{ news }}</li>
+      {% endfor %}
+      </ul>
+      </p>
+    </div>
+      </div>
+</div>
+	    <div class="mb-2">
+		    {{ area_plot }}
 	    </div>
-	    <div>
-		    <div>
-			    <h4>Death Cases</h4>
-		    </div>
-		    {{ graph2 }}
+	    <div class="mb-5">
+		    {{ bar_plot }}
 	    </div>
-	    <div>
-		    <div>
-			    <h4>Recovered Cases</h4>
-		    </div>
 
-		    {{ graph3 }}
 	    </div>
+	    <footer class="footer bg-gray-50 relative pt-1 border-b-2 border-blue-700">
+    <div class="container mx-auto px-6">
+
+        <div class="sm:flex sm:mt-8">
+            <div class="text-gray-400 mt-8 sm:mt-0 sm:w-full sm:px-8 flex flex-col md:flex-row justify-around">
+                <div class="flex flex-col">
+                    <span class="text-xs mt-3 font-semibold tracking-wide text-gray-900 uppercase">Contribute</span>
+                    <span class="my-2 text-sm"><a href="https://github.com/thelaycon/webkage" class="hover:text-gray-900 transition-colors duration-200">Webkage</a></span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs mt-3 font-semibold tracking-wide text-gray-900 uppercase">Contact</span>
+                    <span class="my-2 text-sm"><a href="https://github.com/thelaycon/" class="hover:text-gray-900 transition-colors duration-200">Github</a></span>
+                                  <span class="my-r text-sm"><a href="https://facebook.com/tobi.leconaman" class="hover:text-gray-900 transition-colors duration-200">Facebook</a></span> 
+		</div>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto px-6">
+        <div class="mt-16 border-t-2 border-gray-300 flex flex-col items-center">
+            <div class="sm:w-2/3 text-center py-6">
+                <p class="text-sm text-gray-300 font-bold mb-2">
+                    © 2021 Lay Con
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
 	</body>
 </html>
