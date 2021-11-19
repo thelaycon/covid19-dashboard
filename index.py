@@ -98,4 +98,4 @@ dash = App
 dash.add_path("/",home)
 dash.set_static("/static/", "assets")
 wsgi = dash.wsgi
-#dash.serve()
+dash.serve()
