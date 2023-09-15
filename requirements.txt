@@ -3,6 +3,6 @@ bs4
 pandas
 numpy
 plotly
-webkage
+webkage==0.5
 requests
 gunicorn
